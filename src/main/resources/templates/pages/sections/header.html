@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body th:fragment="head" class="container mb-5">
+<nav class="navbar navbar-expand-sm navbar-white justify-content-end m-3">
+    <ul class="navbar-nav">
+        <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')" class="nav-item">
+            <a class="nav-link" th:href="@{/}">Home</a>
+        </li>
+        <li sec:authorize="hasRole('ROLE_ADMIN')"  class="nav-item">
+            <a class="nav-link" th:href="@{/admin/category}">Categories</a>
+        </li>
+        <li sec:authorize="hasRole('ROLE_ADMIN')"  class="nav-item">
+            <a class="nav-link" href="#">Set Products</a>
+        </li>
+        <li sec:authorize="hasRole('ROLE_ADMIN')"  class="nav-item">
+            <a class="nav-link" href="#">All invoices</a>
+        </li>
+        <li sec:authorize="hasRole('ROLE_ADMIN')"  class="nav-item">
+            <a class="nav-link" href="#">Settings</a>
+        </li>
+
+
+<!--        <li sec:authorize="hasRole('ROLE_USER')" class="nav-item">-->
+<!--            <a class="nav-link" href="#">Home</a>-->
+<!--        </li>-->
+        <li sec:authorize="hasRole('ROLE_USER')" class="nav-item">
+            <a class="nav-link" href="#">Karzinka</a>
+        </li>
+        <li sec:authorize="hasRole('ROLE_USER')" class="nav-item">
+            <a class="nav-link" href="#">Invoices</a>
+        </li>
+        <li sec:authorize="hasRole('ROLE_USER')" class="nav-item">
+            <a class="nav-link" href="#">Settings</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#" th:href="@{/logOut}">Log Out</a>
+        </li>
+
+    </ul>
+</nav>
+</body>
+</html>

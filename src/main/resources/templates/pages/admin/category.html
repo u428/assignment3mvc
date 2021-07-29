@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div th:include="pages/sections/header :: head"></div>
+
+<input type="hidden" id="csrf"
+       th:name="${_csrf.parameterName}"
+       th:value="${_csrf.token}" />
+
+
+
+<script>
+    var a=document.getElementById("csrf");
+    console.log(a);
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+package com.ssp.maroqand.assignment3mvc.model.entity;
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ssp.maroqand.assignment3mvc.model.entity.role.Role;
+import lombok.Data;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Data
+@Entity
+@Table(name = "customer")
+public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(length = 20, nullable = false)
+    private String name;
+
+    @Column()
+    private String country;
+
+    @Column()
+    private String address;
+
+    @Column(length = 9, unique = true, nullable = false)
+    private Integer phone;
+
+    @JsonIgnore
+    @Column(nullable = false)
+    private String password;
+
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Order> order;
+
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
+
+}
